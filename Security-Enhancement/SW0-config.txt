@@ -1,0 +1,49 @@
+Building configuration...
+[OK]
+sw1#show run
+Building configuration...
+
+Current configuration : 1762 bytes
+!
+version 15.0
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname sw1
+!
+!
+!
+ip ssh version 2
+ip domain-name ccna.lab
+!
+username admin privilege 1 password 0 Raed11
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+interface FastEthernet0/1
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky 
+ switchport port-security mac-address sticky 0002.1775.2434
+!
+interface FastEthernet0/2
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky 
+!
+interface FastEthernet0/3
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky 
+ switchport port-security mac-address sticky 0001.63DE.AB7C
+!
+interface FastEthernet0/4
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky 
+ switchport port-security mac-address sticky 0001.C7E6.D95A
+!
