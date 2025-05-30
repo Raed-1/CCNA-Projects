@@ -1,0 +1,107 @@
+Building configuration...
+
+Current configuration : 1362 bytes
+!
+version 15.2
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Router
+!
+!
+!
+!
+ip dhcp excluded-address 10.10.10.1
+ip dhcp excluded-address 192.168.1.2 192.168.1.5
+!
+ip dhcp pool ccp-pool
+ network 10.10.10.0 255.255.255.248
+ default-router 10.10.10.1
+ip dhcp pool Raed
+ network 192.168.1.0 255.255.255.0
+ default-router 192.168.1.1
+ dns-server 192.168.1.2
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+!
+license udi pid C819HGW-PT-K9 sn FTX18061UK2-
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0
+ ip address 192.168.1.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface FastEthernet0
+!
+interface FastEthernet1
+ shutdown
+!
+interface FastEthernet2
+!
+interface FastEthernet3
+!
+interface Serial0
+ no ip address
+ clock rate 2000000
+ shutdown
+!
+interface Wlan-GigabitEthernet0
+ description Internal switch interface connecting to the embedded AP
+!
+interface wlan-ap0
+ description Service module interface to manage the embedded AP
+ ip unnumbered Vlan1
+!
+interface Cellular0
+ ip address negotiated
+ shutdown
+!
+interface Vlan1
+ description $ETH-SW-LAUNCH$$INTF-INFO-HWIC 4ESW$
+ ip address 10.10.10.1 255.255.255.248
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+access-list 23 permit 10.10.10.0 0.0.0.7
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
