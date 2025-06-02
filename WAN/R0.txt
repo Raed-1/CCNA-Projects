@@ -1,0 +1,103 @@
+Building configuration...
+
+Current configuration : 1062 bytes
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Router
+!
+!
+!
+!
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+license udi pid CISCO1941/K9 sn FTX15248XI3-
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface GigabitEthernet0/1
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface Serial0/0/0
+ no ip address
+ encapsulation frame-relay
+ clock rate 800000
+!
+interface Serial0/0/0.1 point-to-point
+ ip address 10.0.0.1 255.0.0.0
+ frame-relay interface-dlci 100
+ clock rate 2000000
+!
+interface Serial0/0/0.2 point-to-point
+ ip address 20.0.0.1 255.0.0.0
+ frame-relay interface-dlci 200
+ clock rate 2000000
+!
+interface Serial0/0/1
+ no ip address
+ clock rate 2000000
+ shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+router rip
+ network 10.0.0.0
+ network 20.0.0.0
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
